@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Repositories\User\UserRepositoryInterface;
+
 class UserController extends Controller
 {
+    private $repository;
+
+    public function __construct(UserRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -85,12 +94,7 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        if (!Auth::attempt( $request->all() )) {
-            return response(['message'=>'Invalid login credentials']);
-        }
-
-        $accessToken = Auth::user()->createToken('authToken')->accessToken;
-
-        return response()->json(['user' => Auth::user(), 'auth' => true, 'accessToken' => $accessToken]);
+        $data = $request->all();
+        return $this->repository->login($data);
     }
 }
