@@ -4,6 +4,8 @@ namespace App\Repositories\User;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\QueryException;
 
 use App\Repositories\User\UserRepositoryInterface;
 use App\Exceptions\UserNotFoundException;
@@ -35,9 +37,29 @@ class UserRepository implements UserRepositoryInterface
                 'accessToken' => $accessToken
             ]);
         } catch (UserNotFoundException $e) {
-            return response('Unauthenticated', 401)->json([
-                "message" => $e->message
-            ]);
+            $content = 'User credentials mismatch';
+            return response($content, 401);
+        }
+    }
+
+    private function saveUser($data)
+    {
+        $user = new User;
+
+        $user->name = $data["name"];
+        $user->email = $data["email"];
+        $user->password = Hash::make($data["password"]);
+
+        $user->save();
+    }
+
+    public function createUser($data)
+    {
+        try {
+            $this->saveUser($data);
+        } catch (QueryException $e) {
+            $content = 'Email already exist';
+            return response($content, 406);
         }
     }
 }
