@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/signup', [UserController::class, 'store']);
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::resource('/user', UserController::class);
