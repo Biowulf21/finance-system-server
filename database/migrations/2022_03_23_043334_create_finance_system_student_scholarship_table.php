@@ -15,7 +15,9 @@ class CreateFinanceSystemStudentScholarshipTable extends Migration
     {
         Schema::create('finance_system_student_scholarship', function (Blueprint $table) {
             $table->id();
-            $table->foreign('student_id')->references('id')->on('financefinance_system_student');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('scholarship_id');
+            $table->foreign('student_id')->references('id')->on('finance_system_student');
             $table->foreign('scholarship_id')->references('id')->on('finance_system_scholarship');
             $table->timestamps();
         });
