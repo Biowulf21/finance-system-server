@@ -17,7 +17,6 @@ class CreateFinanceSystemScholarshipTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->boolean('is_active');
             $table->timestamps();
             $table->softDeletes();
         });

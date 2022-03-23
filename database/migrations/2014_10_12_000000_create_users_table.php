@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
+            $table->enum('account_type', ['finance', 'library']);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
