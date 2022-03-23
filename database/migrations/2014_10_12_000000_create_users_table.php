@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('finance_system_users', function (Blueprint $table) {
+        Schema::create('finance_system_user', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
