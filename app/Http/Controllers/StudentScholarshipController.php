@@ -42,7 +42,6 @@ class StudentScholarshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
