@@ -1,7 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentScholarshipController;
+use App\Http\Controllers\PaymentInfoController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// UNAUTHORIZED ROUTES
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/signup', [UserController::class, 'store']);
+
+// AUTHORIZED ROUTES
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::resource('/user', UserController::class);
+    Route::resource('/scholarship', ScholarshipController::class);
+    Route::resource('/student', StudentController::class);
+    Route::resource('/student-scholarship', StudentScholarshipController::class);
+    Route::resource('/payment-info', PaymentInfoController::class);
+    Route::resource('/transaction', TransactionController::class);
 });

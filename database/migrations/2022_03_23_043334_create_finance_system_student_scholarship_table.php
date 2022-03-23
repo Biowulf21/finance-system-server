@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateFinanceSystemStudentScholarshipTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('finance_system_user', function (Blueprint $table) {
+        Schema::create('finance_system_student_scholarship', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->enum('account_type', ['finance', 'library']);
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreign('student_id')->references('id')->on('financefinance_system_student');
+            $table->foreign('scholarship_id')->references('id')->on('finance_system_scholarship');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('finance_system_student_scholarship');
     }
 }
