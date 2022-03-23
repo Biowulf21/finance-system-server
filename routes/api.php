@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\PaymentDetailsController;
-use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\StudentScholarshipController;
+use App\Http\Controllers\PaymentInfoController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::resource('/user', UserController::class);
     Route::resource('/scholarship', ScholarshipController::class);
     Route::resource('/student', StudentController::class);
-    Route::resource('/payment-details', PaymentDetailsController::class);
-    Route::resource('/payment-type', PaymentTypeController::class);
+    Route::resource('/student-scholarship', StudentScholarshipController::class);
+    Route::resource('/payment-info', PaymentInfoController::class);
+    Route::resource('/transaction', TransactionController::class);
 });

@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Repositories\Student\StudentRepositoryInterface;
+use App\Repositories\Transaction\TransactionRepositoryInterface;
 
-class StudentController extends Controller
+class TransactionController extends Controller
 {
     private $repository;
 
-    public function __construct(StudentRepositoryInterface $repository)
+    public function __construct(TransactionRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }

@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PaymentTypeController extends Controller
+use App\Repositories\StudentScholarship\StudentScholarshipRepositoryInterface;
+
+class StudentScholarshipController extends Controller
 {
+    private $repository;
+
+    public function __construct(StudentScholarshipRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *

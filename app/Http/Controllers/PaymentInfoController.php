@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PaymentDetailsController extends Controller
+use App\Repositories\PaymentInfo\PaymentInfoRepositoryInterface;
+
+class PaymentInfoController extends Controller
 {
+    private $repository;
+
+    public function __construct(PaymentInfoRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *

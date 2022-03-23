@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Repositories\Scholarship\ScholarshipRepositoryInterface;
+
 class ScholarshipController extends Controller
 {
+    private $repository;
+
+    public function __construct(ScholarshipRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *
