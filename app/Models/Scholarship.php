@@ -13,7 +13,6 @@ class Scholarship extends Model
 
     protected $fillable = [
         'name',
-        'type',
-        'is_active',
+        'type'
     ];
 }

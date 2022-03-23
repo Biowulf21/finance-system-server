@@ -42,7 +42,8 @@ class ScholarshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        return $this->repository->createScholarship($data);
     }
 
     /**
