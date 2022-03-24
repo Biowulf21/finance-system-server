@@ -21,7 +21,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repository->getAllTransactions();
     }
 
     /**
