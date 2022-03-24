@@ -6,8 +6,11 @@ use App\Models\PaymentInfo;
 
 class PaymentInfoRepository implements PaymentInfoRepositoryInterface
 {
-    public function createPaymentInfo()
+    public function createPaymentInfo($data)
     {
-        # code...
+        $payment_info = new PaymentInfo();
+
+        $payment_info->name = $data['name'];
+        $payment_info->amount = $data['amount'];
     }
 }
