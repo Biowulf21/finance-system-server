@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 use App\Repositories\Transaction\TransactionRepositoryInterface;
@@ -21,7 +22,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        //echo 'index';
+        return $this->repository->showAllTransactions();
     }
 
     /**
@@ -53,9 +55,10 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $id = $request->all();
+        return $this->repository->showSpecificTransaction($id);
     }
 
     /**
