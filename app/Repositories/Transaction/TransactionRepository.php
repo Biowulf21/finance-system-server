@@ -10,6 +10,11 @@ use App\Models\User;
 
 class TransactionRepository implements TransactionRepositoryInterface
 {
+    private function getAllTransactionWithJointTables()
+    {
+        return Transaction::with(['payedTo', 'payedBy', 'paymentInfoId'])->get();
+    }
+
     public function createTransaction($data)
     {
         $transaction = new Transaction;
@@ -20,8 +25,11 @@ class TransactionRepository implements TransactionRepositoryInterface
         $transaction->amount_payed = $data['amount_payed'];
 
         $transaction->save();
+    }
 
-        return "paid to: $transaction->payed_to, paid by: $transaction->payed_by, payment info: $transaction->payment_info_id, amount paid: $transaction->amount_payed";
+    public function getAllTransactions()
+    {
+        return $this->getAllTransactionWithJointTables();
     }
 
     public function showSpecificTransaction($id)

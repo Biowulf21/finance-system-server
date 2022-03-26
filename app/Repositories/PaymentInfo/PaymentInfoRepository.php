@@ -12,5 +12,7 @@ class PaymentInfoRepository implements PaymentInfoRepositoryInterface
 
         $payment_info->name = $data['name'];
         $payment_info->amount = $data['amount'];
+
+        $payment_info->save();
     }
 }

@@ -22,8 +22,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //echo 'index';
-        return $this->repository->showAllTransactions();
+        return $this->repository->getAllTransactions();
     }
 
     /**
