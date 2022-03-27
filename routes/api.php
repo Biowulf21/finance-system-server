@@ -23,6 +23,7 @@ use App\Http\Controllers\TransactionController;
 // UNAUTHORIZED ROUTES
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/signup', [UserController::class, 'store']);
+Route::get('/verify-token', [UserController::class, 'verifyToken']);
 
 // AUTHORIZED ROUTES
 Route::group(['middleware' => ['auth:api']], function () {
