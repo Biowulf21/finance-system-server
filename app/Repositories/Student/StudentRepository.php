@@ -17,4 +17,9 @@ class StudentRepository implements StudentRepositoryInterface
 
         $student->save();
     }
+
+    public function updateStudent($request, $id)
+    {
+        $updatedStudent = Student::where("id", "=", $id)->update($request->all());
+    }
 }

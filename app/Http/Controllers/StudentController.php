@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 use App\Repositories\Student\StudentRepositoryInterface;
+use PHPUnit\Framework\MockObject\Builder\Stub;
 
 class StudentController extends Controller
 {
@@ -77,7 +79,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->repository->updateStudent($request, $id);
     }
 
     /**
