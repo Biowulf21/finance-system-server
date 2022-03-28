@@ -17,6 +17,7 @@ class CreateFinanceSystemScholarshipTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
+            $table->double('amount')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
