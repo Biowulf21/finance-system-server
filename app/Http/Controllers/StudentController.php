@@ -79,7 +79,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->repository->updateStudent($request, $id);
+        return $this->repository->updateStudent($request, $id);
     }
 
     /**

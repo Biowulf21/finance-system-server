@@ -77,7 +77,7 @@ class ScholarshipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->repository->updateScholarship($request, $id);
     }
 
     /**

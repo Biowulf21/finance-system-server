@@ -15,4 +15,8 @@ class ScholarshipRepository implements ScholarshipRepositoryInterface
 
         $scholarship->save();
     }
+    public function updateScholarship($request, $id)
+    {
+        $updatedScholarship = Scholarship::where('id', '=', $id)->update($request->all());
+    }
 }

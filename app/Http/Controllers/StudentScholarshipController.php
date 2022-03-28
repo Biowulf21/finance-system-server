@@ -12,7 +12,7 @@ class StudentScholarshipController extends Controller
 
     public function __construct(StudentScholarshipRepositoryInterface $repository)
     {
-        $this->repository = $repository;
+        return $this->repository = $repository;
     }
     /**
      * Display a listing of the resource.
