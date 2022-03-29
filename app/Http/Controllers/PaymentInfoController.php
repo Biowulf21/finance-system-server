@@ -21,7 +21,7 @@ class PaymentInfoController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repository->getAllPaymentInfo();
     }
 
     /**
@@ -56,7 +56,7 @@ class PaymentInfoController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->getSpecififcPaymentInfo($id);
     }
 
     /**

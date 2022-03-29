@@ -17,6 +17,16 @@ class PaymentInfoRepository implements PaymentInfoRepositoryInterface
         $payment_info->save();
     }
 
+    public function getAllPaymentInfo()
+    {
+        return response(PaymentInfo::all(), 200);
+    }
+
+    public function getSpecififcPaymentInfo($id)
+    {
+        return response(PaymentInfo::all()->where("id", "=", $id));
+    }
+
     public function updatePaymentInfo($request, $id)
     {
         try {
