@@ -21,7 +21,7 @@ class ScholarshipController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repository->getScholarships();
     }
 
     /**

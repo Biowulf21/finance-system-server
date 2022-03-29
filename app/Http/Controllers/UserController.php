@@ -98,4 +98,10 @@ class UserController extends Controller
         $data = $request->all();
         return $this->repository->login($data);
     }
+
+    public function verifyToken()
+    {
+        $valid = Auth::guard('api')->check();
+        return response()->json([ "valid" => $valid ]);
+    }
 }

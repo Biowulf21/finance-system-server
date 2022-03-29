@@ -16,7 +16,8 @@ class CreateFinanceSystemScholarshipTable extends Migration
         Schema::create('finance_system_scholarship', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
+            $table->string('type')->nullable();
+            $table->double('amount')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

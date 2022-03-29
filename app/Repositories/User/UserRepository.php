@@ -49,6 +49,7 @@ class UserRepository implements UserRepositoryInterface
         $user->name = $data["name"];
         $user->username = $data["username"];
         $user->password = Hash::make($data["password"]);
+        $user->school = $data["school"];
 
         $user->save();
     }
@@ -58,8 +59,7 @@ class UserRepository implements UserRepositoryInterface
         try {
             $this->saveUser($data);
         } catch (QueryException $e) {
-            return $e->getMessage();
-            $content = 'Email already exist';
+            $content = $e->getMessage();
             return response($content, 406);
         }
     }
