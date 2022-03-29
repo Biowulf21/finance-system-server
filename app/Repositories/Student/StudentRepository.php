@@ -40,4 +40,14 @@ class StudentRepository implements StudentRepositoryInterface
             return response($message, 400);
         }
     }
+
+    public function getSpecificStudent($id)
+    {
+        try {
+            return response(Student::all()->where("id", "=", $id), 200);
+        } catch (Exception $e) {
+            $message = "Bad Request";
+            return response($message, 400);
+        }
+    }
 }
