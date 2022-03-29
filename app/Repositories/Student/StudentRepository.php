@@ -27,4 +27,17 @@ class StudentRepository implements StudentRepositoryInterface
             return response($e, 400);
         }
     }
+
+    public function getAllStudents()
+    {
+        $students = Student::all();
+
+
+        try {
+            return response($students, 200);
+        } catch (Exception $e) {
+            $message = "Bad Request";
+            return response($message, 400);
+        }
+    }
 }

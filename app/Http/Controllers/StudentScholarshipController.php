@@ -12,7 +12,7 @@ class StudentScholarshipController extends Controller
 
     public function __construct(StudentScholarshipRepositoryInterface $repository)
     {
-        return $this->repository = $repository;
+        $this->repository = $repository;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +21,6 @@ class StudentScholarshipController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
