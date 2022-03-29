@@ -79,7 +79,7 @@ class PaymentInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->repository->updatePaymentInfo($request, $id);
     }
 
     /**
