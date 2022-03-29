@@ -3,6 +3,7 @@
 namespace App\Repositories\Student;
 
 use App\Models\Student;
+use Exception;
 
 class StudentRepository implements StudentRepositoryInterface
 {
@@ -20,6 +21,10 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function updateStudent($request, $id)
     {
-        $updatedStudent = Student::where("id", "=", $id)->update($request->all());
+        try {
+            return $updatedStudent = Student::where("id", "=", $id)->update($request->all());
+        } catch (Exception $e) {
+            return response($e, 400);
+        }
     }
 }
