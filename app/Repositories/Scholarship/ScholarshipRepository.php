@@ -12,7 +12,13 @@ class ScholarshipRepository implements ScholarshipRepositoryInterface
 
         $scholarship->name = $data["name"];
         $scholarship->type = $data["type"];
+        $scholarship->amount = $data["amount"];
 
         $scholarship->save();
+    }
+
+    public function getScholarships()
+    {
+        return Scholarship::all();
     }
 }
