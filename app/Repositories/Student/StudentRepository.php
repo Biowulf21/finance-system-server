@@ -19,14 +19,6 @@ class StudentRepository implements StudentRepositoryInterface
         $student->save();
     }
 
-    public function updateStudent($request, $id)
-    {
-        try {
-            return $updatedStudent = Student::where("id", "=", $id)->update($request->all());
-        } catch (Exception $e) {
-            return response($e, 400);
-        }
-    }
 
     public function getAllStudents()
     {
@@ -49,5 +41,18 @@ class StudentRepository implements StudentRepositoryInterface
             $message = "Bad Request";
             return response($message, 400);
         }
+    }
+    public function updateStudent($request, $id)
+    {
+        try {
+            return $updatedStudent = Student::where("id", "=", $id)->update($request->all());
+        } catch (Exception $e) {
+            return response($e, 400);
+        }
+    }
+    public function deleteStudnet($id)
+    {
+        echo $deletedStudent = Student::all()->where('id', "=", $id)->first()->delete();
+        echo "deleted";
     }
 }

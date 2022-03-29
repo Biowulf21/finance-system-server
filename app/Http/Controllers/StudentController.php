@@ -90,6 +90,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->repository->deleteStudnet($id);
     }
 }

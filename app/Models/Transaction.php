@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\PaymentInfo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'finance_system_transaction';
 

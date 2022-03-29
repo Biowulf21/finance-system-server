@@ -10,4 +10,5 @@ interface StudentRepositoryInterface
     public function getAllStudents();
     public function getSpecificStudent($id);
     public function updateStudent($request, $id);
+    public function deleteStudnet($id);
 }

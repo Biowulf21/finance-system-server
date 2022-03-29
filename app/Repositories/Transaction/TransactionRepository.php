@@ -81,4 +81,9 @@ class TransactionRepository implements TransactionRepositoryInterface
         }
         return $transaction_details;
     }
+
+    public function deleteTransaction($id)
+    {
+        $deleted_Transaction = Transaction::all()->where("id", "=", $id)->first()->delete();
+    }
 }

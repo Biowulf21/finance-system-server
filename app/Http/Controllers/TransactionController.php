@@ -91,6 +91,6 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->repository->deleteTransaction($id);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDeletedAtColumnTransactions extends Migration
+class RenameTransactionDeletedAt extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddDeletedAtColumnTransactions extends Migration
     public function up()
     {
         Schema::table('finance_system_transaction', function (Blueprint $table) {
-            $table->timestamp('transaction_deleted_at')->nullable();
+            $table->renameColumn("transaction_deleted_at", "deleted_at");
         });
     }
 
@@ -26,7 +26,7 @@ class AddDeletedAtColumnTransactions extends Migration
     public function down()
     {
         Schema::table('finance_system_transaction', function (Blueprint $table) {
-            $table->dropColumn('transaction_deleted_at');
+            //
         });
     }
 }
