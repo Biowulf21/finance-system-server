@@ -21,7 +21,7 @@ class PaymentInfoController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repository->getAllPaymentInfo();
     }
 
     /**
@@ -42,6 +42,9 @@ class PaymentInfoController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->all();
+
+        return $this->repository->createPaymentInfo($data);
         //
     }
 
@@ -53,7 +56,7 @@ class PaymentInfoController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->getSpecififcPaymentInfo($id);
     }
 
     /**
@@ -76,7 +79,7 @@ class PaymentInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->repository->updatePaymentInfo($request, $id);
     }
 
     /**

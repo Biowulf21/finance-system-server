@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 use App\Repositories\Student\StudentRepositoryInterface;
+use PHPUnit\Framework\MockObject\Builder\Stub;
 
 class StudentController extends Controller
 {
@@ -21,7 +23,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repository->getAllStudents();
     }
 
     /**
@@ -54,7 +56,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->getSpecificStudent($id);
     }
 
     /**
@@ -77,7 +79,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->repository->updateStudent($request, $id);
     }
 
     /**
@@ -88,6 +90,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->repository->deleteStudnet($id);
     }
 }

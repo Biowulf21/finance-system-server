@@ -21,7 +21,6 @@ class StudentScholarshipController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -42,7 +41,6 @@ class StudentScholarshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**

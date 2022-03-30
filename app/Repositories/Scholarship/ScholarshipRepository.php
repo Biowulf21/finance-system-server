@@ -3,6 +3,7 @@
 namespace App\Repositories\Scholarship;
 
 use App\Models\Scholarship;
+use Exception;
 
 class ScholarshipRepository implements ScholarshipRepositoryInterface
 {
@@ -16,6 +17,13 @@ class ScholarshipRepository implements ScholarshipRepositoryInterface
 
         $scholarship->save();
     }
+    public function updateScholarship($request, $id)
+    {
+        try {
+            return $updatedScholarship = Scholarship::where('id', '=', $id)->update($request->all());
+        } catch (Exception $e) {
+            return response($e, 400);
+        }
 
     public function getScholarships()
     {

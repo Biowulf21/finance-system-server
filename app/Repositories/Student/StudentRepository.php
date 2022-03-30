@@ -3,6 +3,7 @@
 namespace App\Repositories\Student;
 
 use App\Models\Student;
+use Exception;
 
 class StudentRepository implements StudentRepositoryInterface
 {
@@ -16,5 +17,42 @@ class StudentRepository implements StudentRepositoryInterface
         $student->lrn = $data["lrn"];
 
         $student->save();
+    }
+
+
+    public function getAllStudents()
+    {
+        $students = Student::all();
+
+
+        try {
+            return response($students, 200);
+        } catch (Exception $e) {
+            $message = "Bad Request";
+            return response($message, 400);
+        }
+    }
+
+    public function getSpecificStudent($id)
+    {
+        try {
+            return response(Student::all()->where("id", "=", $id), 200);
+        } catch (Exception $e) {
+            $message = "Bad Request";
+            return response($message, 400);
+        }
+    }
+    public function updateStudent($request, $id)
+    {
+        try {
+            return $updatedStudent = Student::where("id", "=", $id)->update($request->all());
+        } catch (Exception $e) {
+            return response($e, 400);
+        }
+    }
+    public function deleteStudnet($id)
+    {
+        echo $deletedStudent = Student::all()->where('id', "=", $id)->first()->delete();
+        echo "deleted";
     }
 }
